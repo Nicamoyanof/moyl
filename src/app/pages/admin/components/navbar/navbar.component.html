@@ -1,0 +1,19 @@
+<nav>
+    <mat-icon mat-button (click)="openMenu()">menu</mat-icon>
+    <p>MOYL</p>
+    <span class="logout">
+        <p>Cerrar Sesion</p>
+        <mat-icon>power_settings_new</mat-icon>
+    </span>
+</nav>
+<div class="container-sidebar" [ngStyle]="{'left':showMenu?'0':'-30%'}" >
+  <mat-icon class="icon-close-menu" (click)="openMenu()">keyboard_backspace</mat-icon>
+   <ul>
+    <li routerLink="./categorias" >Categorías</li>
+    <li routerLink="./productos">Productos</li>
+    <li>Etiquetas</li>
+    <li>Pedidos</li>
+    <li>Clientes</li>
+    <!-- <li>Informes</li> -->
+   </ul>
+</div>

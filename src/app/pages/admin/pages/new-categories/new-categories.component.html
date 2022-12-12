@@ -1,0 +1,99 @@
+<div class="table-category">
+<h1>Categorias</h1>
+<button mat-raised-button class="btn-editar mt-3" style="background: green; color: #fff; font-weight: 600;"  data-bs-toggle="modal" data-bs-target="#agregarCategoria">Agregar nueva categoría</button>
+    
+  <table
+    mat-table
+    [dataSource]="dataSource"
+    class="mat-elevation-z8 mt-5"
+  >
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Position Column -->
+    
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="img">
+      <th mat-header-cell *matHeaderCellDef>Imagen</th>
+      <td mat-cell *matCellDef="let element"><img class="img-category" src="{{element.img}}" alt=""></td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Nombre</th>
+      <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef>Descripcion</th>
+      <td mat-cell *matCellDef="let element" class="column-description">{{ element.description }}</td>
+    </ng-container>
+    <ng-container matColumnDef="slug">
+      <th mat-header-cell *matHeaderCellDef>Slug</th>
+      <td mat-cell *matCellDef="let element">{{ element.slug }}</td>
+    </ng-container>
+    <ng-container matColumnDef="quantity">
+      <th mat-header-cell *matHeaderCellDef>Cantidad</th>
+      <td mat-cell *matCellDef="let element">{{ element.quantity }}</td>
+    </ng-container>
+    <ng-container matColumnDef="update">
+        <th mat-header-cell *matHeaderCellDef >Editar</th>
+        <td mat-cell *matCellDef="let element"><button mat-raised-button class="btn-editar" color="primary"  data-bs-toggle="modal" data-bs-target="#agregarCategoria">Editar</button><button mat-raised-button color="warn">Borrar</button></td>
+      </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>
+
+
+<div class="modal" tabindex="-1" id="agregarCategoria">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Agregar Categoria</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form class="form-new-category">
+            <label for="">
+              <p class="title-input">Nombre:</p>
+              <input type="text">
+              <p class="description-input">El nombre es como aparece en tu sitio.</p>
+            </label>
+            <label for="">
+              <p class="title-input">Slug (url):</p>
+              <input type="text">
+              <p class="description-input">El «slug» es la versión amigable de la URL para el nombre. Suele estar en todo en minúsculas y contiene solo letras, números y guiones.</p>
+            </label>
+            <label for="">
+              <p class="title-input">Categoría padre</p>
+              <input type="text">
+              <p class="description-input">Asigna un termino principal para crear jerarquías. Por ejemplo, el término «Jazz» sería el principal de «Bebop» y «Big Band».</p>
+            </label>
+            <label for="">
+              <p class="title-input">Descripción</p>
+              <textarea></textarea>
+              <p class="description-input">La descripción no se muestra por defecto; sin embargo, hay algunos temas que pueden mostrarla.</p>
+            </label>
+            <!-- <label for="">
+              <p class="title-input">Tipo de visualización</p>
+              <input type="text">
+            </label> -->
+            <label for="">
+              <p class="title-input">Miniatura</p>
+              <div class="container-img-category">
+                <img class="img-category" src="../../../../../assets/img/icono-camara.png" alt="">
+                <input type="file">
+              </div>
+              </label>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-success">Crear categoría</button>
+        </div>
+      </div>
+    </div>
+  </div>

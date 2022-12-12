@@ -1,0 +1,62 @@
+<div class="table-producto">
+  <h1>Productos</h1>
+  <button
+    mat-raised-button
+    class="btn-editar mt-3"
+    style="background: green; color: #fff; font-weight: 600" routerLink="./crear">
+    Agregar nuevo producto
+  </button>
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 mt-5">
+    <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Position Column -->
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="img">
+      <th mat-header-cell *matHeaderCellDef>Imagen</th>
+      <td mat-cell *matCellDef="let element">
+        <img class="img-producto" src="{{ element.img }}" alt="" />
+      </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Nombre</th>
+      <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef>Descripcion</th>
+      <td mat-cell *matCellDef="let element" class="column-description">
+        {{ element.description }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="slug">
+      <th mat-header-cell *matHeaderCellDef>Slug</th>
+      <td mat-cell *matCellDef="let element">{{ element.slug }}</td>
+    </ng-container>
+    <ng-container matColumnDef="quantity">
+      <th mat-header-cell *matHeaderCellDef>Cantidad</th>
+      <td mat-cell *matCellDef="let element">{{ element.quantity }}</td>
+    </ng-container>
+    <ng-container matColumnDef="update">
+      <th mat-header-cell *matHeaderCellDef>Editar</th>
+      <td mat-cell *matCellDef="let element">
+        <button
+          mat-raised-button
+          class="btn-editar"
+          color="primary"
+          data-bs-toggle="modal"
+          data-bs-target="#agregarCategoria"
+        >
+          Editar</button
+        ><button mat-raised-button color="warn">Borrar</button>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>

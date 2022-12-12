@@ -1,0 +1,24 @@
+.element-estado-editar {
+  display: flex;
+  column-gap: 15px;
+  align-items: center;
+  span {
+    display: flex;
+    column-gap: 5px;
+    align-items: center;
+    .estado {
+      font-weight: 700;
+    }
+  }
+}
+.container-form-estado {
+  display: flex;
+  column-gap: 20px;
+  button{
+    height: 40px;
+  }
+  .select-option {
+    opacity: 0.75;
+    font-size: 0.75em;
+  }
+}

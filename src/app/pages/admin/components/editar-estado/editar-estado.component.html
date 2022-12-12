@@ -1,0 +1,20 @@
+<div class="element-estado-editar">
+    <!-- <img src="" alt=""> -->
+    <span>
+        <p class="title">{{titleEstado}}:</p>    
+        <p class="estado">{{defaultValue}}</p>
+    </span>
+    <p class="btn btn-link" (click)="editEstado()" [ngStyle]="{'display':!isEdit?'flex':'none'}">Editar</p>
+</div>
+<form class="container-form-estado" [ngStyle]="{'display':isEdit?'flex':'none'}">
+    <mat-form-field appearance="fill">
+        <mat-label>{{titleEstado}}</mat-label>
+        <mat-select [(ngModel)]="selectedValue" name="food">
+          <mat-option *ngFor="let item of listSelect" [value]="item.value">
+            {{item.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    <button class="btn btn-outline-primary" (click)="cambiarEstado()">Aceptar</button>
+    <p class="btn btn-link" (click)="editEstado()">Cancelar</p>
+</form>

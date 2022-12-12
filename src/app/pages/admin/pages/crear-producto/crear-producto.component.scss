@@ -1,0 +1,14 @@
+.container-crear-prod{
+    max-height: calc(100vh - 70px);
+    overflow:scroll;
+}
+.container-crear-prod::-webkit-scrollbar:horizontal{
+    overflow: hidden;
+    display: none;
+}
+.container-chip{
+    width: 90%;
+    .tag-chip-list{
+        width: 100%;
+    }
+}

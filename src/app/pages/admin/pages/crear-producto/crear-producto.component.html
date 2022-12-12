@@ -1,0 +1,106 @@
+<main class="col-12 p-5 container-crear-prod">
+  <h1>Crear nuevo producto</h1>
+  <mat-card class="mt-5">
+    <mat-card-header>
+      <mat-card-title class="h3">Nombre del producto</mat-card-title>
+    </mat-card-header>
+    <mat-card-actions class="ms-3">
+      <input type="text" />
+    </mat-card-actions>
+  </mat-card>
+  <mat-card class="mt-5">
+    <mat-card-header>
+      <mat-card-title class="h3">Descripcion corta</mat-card-title>
+    </mat-card-header>
+    <mat-card-actions class="ms-3">
+      <input type="text" />
+    </mat-card-actions>
+  </mat-card>
+  <mat-card class="mt-5">
+    <mat-card-header>
+      <mat-card-title class="h3">Publicar</mat-card-title>
+    </mat-card-header>
+    <mat-card-actions class="ms-3">
+        <mat-list role="list">
+            <app-editar-estado [titleEstado]="'Estado'" [listSelect]="estadosList" [defaultValue]="'Borrador'"></app-editar-estado>
+            <app-editar-estado [titleEstado]="'Visibilidad'" [listSelect]="publicacionList" [defaultValue]="'Pública '"></app-editar-estado>
+          </mat-list>
+    </mat-card-actions>
+  </mat-card>
+  <mat-card class="mt-5">
+    <mat-card-header>
+      <mat-card-title class="h3">Imagen del producto</mat-card-title>
+    </mat-card-header>
+    <mat-card-actions class="ms-3">
+      <input type="file" />
+    </mat-card-actions>
+  </mat-card>
+  <mat-card class="mt-5">
+    <mat-card-header>
+      <mat-card-title class="h3">Galería del producto</mat-card-title>
+    </mat-card-header>
+    <mat-card-actions class="ms-3">
+      <input type="file" />
+    </mat-card-actions>
+  </mat-card>
+  <mat-card class="mt-5">
+    <mat-card-header>
+      <mat-card-title class="h3">Categorías del producto</mat-card-title>
+    </mat-card-header>
+    <mat-card-actions class="ms-3">
+      <app-editar-estado [titleEstado]="'Categoría seleccionada'" [listSelect]="estadosList" [defaultValue]="'Categorías'"></app-editar-estado>
+    </mat-card-actions>
+  </mat-card>
+  <mat-card class="mt-5">
+    <mat-card-header>
+      <mat-card-title class="h3">Etiquetas del producto</mat-card-title>
+    </mat-card-header>
+    <mat-card-actions class="ms-3 w-100">
+      <form class="container-chip">
+        <mat-form-field class="tag-chip-list" appearance="fill">
+          <mat-label>Favorite Fruits</mat-label>
+          <mat-chip-grid #chipGrid aria-label="Fruit selection">
+            <mat-chip-row *ngFor="let fruit of fruits" (removed)="remove(fruit)">
+              {{fruit}}
+              <button matChipRemove [attr.aria-label]="'remove ' + fruit">
+                <mat-icon>cancel</mat-icon>
+              </button>
+            </mat-chip-row>
+          </mat-chip-grid>
+          <input placeholder="New Fruit..." #fruitInput [formControl]="fruitCtrl"
+            [matChipInputFor]="chipGrid" [matAutocomplete]="auto"
+            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+            (matChipInputTokenEnd)="add($event)"/>
+          <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+            <mat-option *ngFor="let fruit of filteredFruits | async" [value]="fruit">
+              {{fruit}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </form>
+    </mat-card-actions>
+  </mat-card>
+  <mat-card class="mt-5">
+    <mat-card-header>
+      <mat-card-title class="h3">Datos del producto</mat-card-title>
+    </mat-card-header>
+    <mat-card-actions class="ms-3">
+      <mat-tab-group animationDuration="0ms" class="mt-2">
+        <mat-tab label="General"><app-general-datos-prod></app-general-datos-prod></mat-tab>
+        <mat-tab label="Inventario"><app-inventario-datos-prod></app-inventario-datos-prod></mat-tab>
+        <mat-tab label="Envio"><app-envio-datos-prod></app-envio-datos-prod></mat-tab>
+        <mat-tab label="Productos relacionados"><app-pord-relacionados-datos-prod></app-pord-relacionados-datos-prod></mat-tab>
+        <mat-tab label="Atributos"><app-atributos-datos-prod></app-atributos-datos-prod></mat-tab>
+        <mat-tab label="Avanzado"><app-avanzado-datos-prod></app-avanzado-datos-prod></mat-tab>
+      </mat-tab-group>
+    </mat-card-actions>
+  </mat-card>
+  <mat-card class="mt-5">
+    <mat-card-header>
+      <mat-card-title class="h3">Slug del producto</mat-card-title>
+    </mat-card-header>
+    <mat-card-actions class="ms-3">
+      <input type="text" />
+    </mat-card-actions>
+  </mat-card>
+</main>
